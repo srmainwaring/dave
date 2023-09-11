@@ -27,6 +27,15 @@
           </box> -->
         </geometry>
       </collision>
+      <collision name="fin_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_fin_collision.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -37,6 +46,15 @@
           <!-- <box>
             <size>3.05 0.81 0.23</size>
           </box> -->
+        </geometry>
+      </visual>
+      <visual name="fin_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_fin.dae</uri>
+          </mesh>
         </geometry>
       </visual>
     </link>
