@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <model name="wave_glider">
-    <static>false</static>
+
     <link name="wave_glider_float_link">
       <inertial>
         <pose>0 0 -0.13 0 0 0</pose>
@@ -75,15 +75,16 @@
 
     <link name="wave_glider_umbilical_joint_link">
       <inertial>
-          <inertia>
-              <ixx>0.01</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.01</iyy>
-              <iyz>0</iyz>
-              <izz>0.01</izz>
-          </inertia>
-          <mass>0.5</mass>
+        <pose>0.23 0 -0.38 0 0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
       </inertial>
       <collision name="collision">
         <geometry>
@@ -102,19 +103,68 @@
       </visual>
     </link>
 
-    <joint name="float_umbilical_joint_joint" type="revolute">
-        <pose>0.22 0 -0.38 0 0 0</pose>
+    <joint name="wave_glider_umbilical_joint_joint" type="revolute">
+        <pose>0.23 0 -0.38 0 0 0</pose>
         <child>wave_glider_umbilical_joint_link</child>
         <parent>wave_glider_float_link</parent>
         <axis>
-            <limit>
-                <lower>-0.8</lower>
-                <upper>0.8</upper>
-            </limit>
-            <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+          </dynamics>
+          <xyz>1 0 0</xyz>
         </axis>
     </joint>
 
+    <link name="wave_glider_umbilical_link">
+      <inertial>
+        <pose>0.23 0 -1.31 0 0 0</pose>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_umbilical.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_umbilical.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>  
+
+    <joint name="wave_glider_umbilical_joint" type="revolute">
+        <pose>0.23 0 -0.46 0 0 0</pose>
+        <child>wave_glider_umbilical_link</child>
+        <parent>wave_glider_umbilical_joint_joint</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+          </dynamics>
+          <xyz>0 1 0</xyz>
+        </axis>
+    </joint>
 
     <!-- <link name="wave_glider_sub">
       <visual name="visual">
@@ -148,62 +198,6 @@
           <mass>50</mass>
       </inertial>
     </link>
-    <link name="wave_glider_umbilical">
-      <visual name="visual">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/Wave Glider-Umbilical.dae</uri>
-          </mesh>
-        </geometry>
-      </visual>
-      <collision name="collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/COLLISION-Wave Glider-umbilical.dae</uri>
-          </mesh>
-        </geometry>
-      </collision>
-      <inertial>
-          <pose>0 -0.22 -1.58 0 0 0</pose>
-          <inertia>
-              <ixx>0.1</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.1</iyy>
-              <iyz>0</iyz>
-              <izz>0.1</izz>
-          </inertia>
-          <mass>0.5</mass>
-      </inertial>
-    </link>  
-    <joint name="float_umbilicaljoint_joint" type="revolute">
-        <pose>0 -0.22 -0.38 0 0 0</pose>
-        <child>wave_glider_umbilical_joint</child>
-        <parent>wave_glider_float</parent>
-        <axis>
-            <limit>
-                <lower>-0.8</lower>
-                <upper>0.8</upper>
-            </limit>
-            <xyz>0 1 0</xyz>
-        </axis>
-    </joint>
-    <joint name="umbilicaljoint_umbilical_joint" type="revolute">
-        <pose>0 -0.22 -0.46 0 0 0</pose>
-        <child>wave_glider_umbilical</child>
-        <parent>wave_glider_umbilical_joint</parent>
-        <axis>
-            <limit>
-                <lower>-0.8</lower>
-                <upper>0.8</upper>
-            </limit>
-            <xyz>1 0 0</xyz>
-        </axis>
-    </joint>
     <joint name="umbilical_sub_joint" type="revolute">
         <pose>0 -0.22 -2.15 0 0 0</pose>
         <child>wave_glider_sub</child>
@@ -217,8 +211,6 @@
         </axis>
     </joint> -->
 
-
-
     <!-- Hydrodynamics plugin -->
     <plugin
         filename="gz-waves1-hydrodynamics-system"  
@@ -227,24 +219,24 @@
         <enable>wave_glider::wave_glider_float_link</enable>
           
         <hydrodynamics>
-          <damping_on>1</damping_on>
+          <!-- <damping_on>1</damping_on>
           <viscous_drag_on>1</viscous_drag_on> 
-          <pressure_drag_on>1</pressure_drag_on>
+          <pressure_drag_on>1</pressure_drag_on> -->
         
           <!-- Linear and Angular Damping -->
-          <cDampL1>1.0E-6</cDampL1>
+          <!-- <cDampL1>1.0E-6</cDampL1>
           <cDampL2>1.0E-6</cDampL2>
           <cDampR1>1.0E-6</cDampR1>
-          <cDampR2>1.0E-6</cDampR2>
+          <cDampR2>1.0E-6</cDampR2> -->
     
           <!-- 'Pressure' Drag -->
-          <cPDrag1>1.0E+2</cPDrag1> 
+          <!-- <cPDrag1>1.0E+2</cPDrag1> 
           <cPDrag2>1.0E+2</cPDrag2>
           <fPDrag>0.4</fPDrag>
           <cSDrag1>1.0E+2</cSDrag1>
           <cSDrag2>1.0E+2</cSDrag2>
           <fSDrag>0.4</fSDrag>
-          <vRDrag>1.0</vRDrag>
+          <vRDrag>1.0</vRDrag> -->
         </hydrodynamics>
       </plugin>
 
