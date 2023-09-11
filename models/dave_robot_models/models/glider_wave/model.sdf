@@ -57,6 +57,24 @@
           </mesh>
         </geometry>
       </visual>
+      <visual name="sensors_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sensors.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name="umbilical_connection_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_umbilical_connection.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
     </link>
 
     <!-- <link name="wave_glider_sub">
