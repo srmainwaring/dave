@@ -2,39 +2,40 @@
 <sdf version="1.6">
   <model name="wave_glider">
     <static>false</static>
-    <link name="wave_glider_float">
-      <visual name="visual">
+    <link name="wave_glider_hull_link">
+      <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/Wave Glider-Float.dae</uri>
-          </mesh>
-        </geometry>
-      </visual>
+          <mass>71</mass>
+          <inertia>
+            <ixx>4.194916667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>55.35278333</iyy>
+            <iyz>0</iyz>
+            <izz>58.92171667</izz>
+          </inertia>
+      </inertial>
       <collision name="collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/COLLISION-Wave Glider-float.dae</uri>
+            <uri>model://glider_wave/mesh/wave_glider_hull_collision.stl</uri>
           </mesh>
         </geometry>
       </collision>
-      <inertial>
+      <visual name="visual">
         <pose>0 0 0 0 0 0</pose>
-          <inertia>
-              <ixx>10</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>10</iyy>
-              <iyz>0</iyz>
-              <izz>10</izz>
-          </inertia>
-          <mass>50</mass>
-      </inertial>
-    </link>  
-    <link name="wave_glider_sub">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_hull.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- <link name="wave_glider_sub">
       <visual name="visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -156,6 +157,36 @@
             </limit>
             <xyz>0 1 0</xyz>
         </axis>
-    </joint>
+    </joint> -->
+
+    <!-- Hydrodynamics plugin -->
+    <plugin
+        filename="gz-waves1-hydrodynamics-system"  
+        name="gz::sim::systems::Hydrodynamics">
+      
+        <enable>wave_glider::wave_glider_hull_link</enable>
+          
+        <hydrodynamics>
+          <damping_on>1</damping_on>
+          <viscous_drag_on>1</viscous_drag_on> 
+          <pressure_drag_on>1</pressure_drag_on>
+        
+          <!-- Linear and Angular Damping -->
+          <cDampL1>1.0E-6</cDampL1>
+          <cDampL2>1.0E-6</cDampL2>
+          <cDampR1>1.0E-6</cDampR1>
+          <cDampR2>1.0E-6</cDampR2>
+    
+          <!-- 'Pressure' Drag -->
+          <cPDrag1>1.0E+2</cPDrag1> 
+          <cPDrag2>1.0E+2</cPDrag2>
+          <fPDrag>0.4</fPDrag>
+          <cSDrag1>1.0E+2</cSDrag1>
+          <cSDrag2>1.0E+2</cSDrag2>
+          <fSDrag>0.4</fSDrag>
+          <vRDrag>1.0</vRDrag>
+        </hydrodynamics>
+      </plugin>
+
   </model>
 </sdf>
