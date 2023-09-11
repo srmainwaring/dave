@@ -166,50 +166,76 @@
         </axis>
     </joint>
 
-    <!-- <link name="wave_glider_sub">
-      <visual name="visual">
-        <pose>0 0 0 0 0 0</pose>
+    <link name="wave_glider_sub_body_link">
+      <inertial>
+        <pose>0.23 0 -2.35 0 0 0</pose>
+          <inertia>
+              <ixx>0.39815867</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>29.511223</iyy>
+              <iyz>0</iyz>
+              <izz>29.14933567</izz>
+          </inertia>
+          <mass>84</mass>
+      </inertial>
+      <collision name="body_collision">
         <geometry>
           <mesh>
             <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/Wave Glider-Sub.dae</uri>
-          </mesh>
-        </geometry>
-      </visual>
-      <collision name="collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/COLLISION-Wave Glider-sub.dae</uri>
+            <uri>model://glider_wave/mesh/wave_glider_sub_body_collision.stl</uri>
           </mesh>
         </geometry>
       </collision>
-      <inertial>
-        <pose>0 0 -0.22 -2.15 0 0</pose>
-          <inertia>
-              <ixx>10</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>10</iyy>
-              <iyz>0</iyz>
-              <izz>10</izz>
-          </inertia>
-          <mass>50</mass>
-      </inertial>
+      <visual name="body_visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sub_body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name="fin_visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sub_fin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name="thruster_visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sub_thruster.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name="wings_visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sub_wings.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
     </link>
-    <joint name="umbilical_sub_joint" type="revolute">
-        <pose>0 -0.22 -2.15 0 0 0</pose>
-        <child>wave_glider_sub</child>
-        <parent>wave_glider_umbilical</parent>
-        <axis>
-            <limit>
-                <lower>-0.8</lower>
-                <upper>0.8</upper>
-            </limit>
-            <xyz>0 1 0</xyz>
-        </axis>
-    </joint> -->
+
+    <joint name="wave_glider_sub_body_joint" type="revolute">
+      <pose>0.23 0 -2.15 0 0 0</pose>
+      <child>wave_glider_sub_body_link</child>
+      <parent>wave_glider_umbilical_link</parent>
+      <axis>
+        <limit>
+          <lower>-0.8</lower>
+          <upper>0.8</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+        </dynamics>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
 
     <!-- Hydrodynamics plugin -->
     <plugin
@@ -217,6 +243,7 @@
         name="gz::sim::systems::Hydrodynamics">
       
         <enable>wave_glider::wave_glider_float_link</enable>
+        <enable>wave_glider::wave_glider_sub_body_link</enable>
           
         <hydrodynamics>
           <!-- <damping_on>1</damping_on>
