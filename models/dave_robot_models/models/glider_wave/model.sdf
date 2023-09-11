@@ -4,7 +4,7 @@
     <static>false</static>
     <link name="wave_glider_hull_link">
       <inertial>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 -0.13 0 0 0</pose>
           <mass>71</mass>
           <inertia>
             <ixx>4.194916667</ixx>
@@ -22,6 +22,9 @@
             <scale>1.0 1.0 1.0</scale>
             <uri>model://glider_wave/mesh/wave_glider_hull_collision.stl</uri>
           </mesh>
+          <!-- <box>
+            <size>3.05 0.81 0.23</size>
+          </box> -->
         </geometry>
       </collision>
       <visual name="visual">
@@ -31,6 +34,9 @@
             <scale>1.0 1.0 1.0</scale>
             <uri>model://glider_wave/mesh/wave_glider_hull.dae</uri>
           </mesh>
+          <!-- <box>
+            <size>3.05 0.81 0.23</size>
+          </box> -->
         </geometry>
       </visual>
     </link>
