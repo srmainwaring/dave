@@ -71,6 +71,20 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_fin_visual">
+        <pose>-1.195 0 -0.357 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </link>
 
     <link name="wave_glider_umbilical_joint_link">
@@ -274,6 +288,20 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </link>
     <joint name="wave_glider_sub_wing1_joint" type="revolute">
       <pose relative_to="wave_glider_sub_body_link">0.64014 0 0.064323 0 0 0</pose>
@@ -319,6 +347,20 @@
             <uri>model://glider_wave/mesh/wave_glider_sub_wing_v2.dae</uri>
           </mesh>
         </geometry>
+      </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
       </visual>
     </link>
     <joint name="wave_glider_sub_wing2_joint" type="revolute">
@@ -366,6 +408,20 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </link>
     <joint name="wave_glider_sub_wing3_joint" type="revolute">
       <pose relative_to="wave_glider_sub_body_link">0.22497 0 0.064323 0 0 0</pose>
@@ -411,6 +467,20 @@
             <uri>model://glider_wave/mesh/wave_glider_sub_wing_v2.dae</uri>
           </mesh>
         </geometry>
+      </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
       </visual>
     </link>
     <joint name="wave_glider_sub_wing4_joint" type="revolute">
@@ -458,6 +528,20 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </link>
     <joint name="wave_glider_sub_wing5_joint" type="revolute">
       <pose relative_to="wave_glider_sub_body_link">-0.31105 0 0.064323 0 0 0</pose>
@@ -503,6 +587,20 @@
             <uri>model://glider_wave/mesh/wave_glider_sub_wing_v2.dae</uri>
           </mesh>
         </geometry>
+      </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_wing_visual">
+        <pose>0.04175 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
       </visual>
     </link>
     <joint name="wave_glider_sub_wing6_joint" type="revolute">
@@ -599,6 +697,20 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- leave for debugging centre of pressure -->
+      <visual name="cp_rudder_visual">
+        <pose>0 0 -0.062 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </link>
     <joint name="wave_glider_sub_rudder_joint" type="revolute">
       <pose relative_to="wave_glider_sub_rudder_link" degrees="true">0 0 0 0 0 0</pose>
@@ -616,6 +728,158 @@
       </axis>
     </joint>
 
+    <!-- Joint state and force plugins -->
+    <plugin filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+    </plugin>
+    <plugin filename="gz-sim-apply-joint-force-system"
+      name="gz::sim::systems::ApplyJointForce">
+      <joint_name>wave_glider_sub_rudder_joint</joint_name>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-position-controller-system"
+        name="gz::sim::systems::JointPositionController">
+      <joint_name>wave_glider_sub_rudder_joint</joint_name>
+      <topic>/rudder_joint/cmd_pos</topic>
+      <p_gain>40</p_gain>
+      <i_gain>0.0</i_gain>
+      <d_gain>0.1</d_gain>
+      <i_max>1</i_max>
+      <i_min>-1</i_min>
+      <cmd_max>50</cmd_max>
+      <cmd_min>-50</cmd_min>
+    </plugin>
+
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.092</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 1 0</upward>
+      <cp>-1.195 0 -0.357</cp>
+      <link_name>wave_glider_float_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.02</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 1 0</upward>
+      <cp>0 0 -0.062</cp>
+      <link_name>wave_glider_sub_rudder_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing1_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing2_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing3_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing4_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing5_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
+    <plugin name="gz::sim::systems::FoilLiftDrag"
+        filename="asv_sim2-foil-lift-drag-system">
+      <a0>0.0</a0>
+      <cla>6.2832</cla>
+      <alpha_stall>0.1592</alpha_stall>
+      <cla_stall>-0.7083</cla_stall>
+      <cda>0.63662</cda>
+      <area>0.24</area>
+      <fluid_density>1000</fluid_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <cp>0.04175 0 0</cp>
+      <link_name>wave_glider_sub_wing6_link</link_name>
+      <radial_symmetry>1</radial_symmetry>
+      <topic>lift_drag</topic>
+    </plugin>
 
     <!-- Hydrodynamics plugin -->
     <plugin
