@@ -206,14 +206,14 @@
         </geometry>
       </visual>
       <!-- leave for debugging thruster position -->
-      <visual name="thruster_visual">
+      <!-- <visual name="thruster_visual">
         <geometry>
           <mesh>
             <scale>1.0 1.0 1.0</scale>
             <uri>model://glider_wave/mesh/wave_glider_sub_thruster_v2.dae</uri>
           </mesh>
         </geometry>
-      </visual>
+      </visual> -->
       <!-- leave for debugging wing positions -->
       <!-- <visual name="wings_visual">
         <geometry>
@@ -515,6 +515,56 @@
         <xyz>0 1 0</xyz>
       </axis>
     </joint>
+
+    <link name="wave_glider_sub_thruster_link">
+      <pose relative_to="wave_glider_sub_body_link" degrees="true">-0.856622 0 0 0 -90 0</pose>
+      <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <inertia>
+              <ixx>0.013428506</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.013428506</iyy>
+              <iyz>0</iyz>
+              <izz>0.000852845</izz>
+          </inertia>
+          <mass>1</mass>
+      </inertial>
+      <collision name="thruster_collision">
+        <pose>0 0 0.1975 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0413</radius>
+            <length>0.395</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="thruster_visual">
+        <geometry>
+          <mesh>
+            <scale>1.0 1.0 1.0</scale>
+            <uri>model://glider_wave/mesh/wave_glider_sub_thruster_v3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="wave_glider_sub_thruster_joint" type="revolute">
+      <pose relative_to="wave_glider_sub_body_link" degrees="true">-0.856622 0 0 0 -90 0</pose>
+      <child>wave_glider_sub_thruster_link</child>
+      <parent>wave_glider_sub_body_link</parent>
+      <axis>
+        <limit>
+          <lower>-1.0E-16</lower>
+          <upper>1.0E+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
 
     <!-- Hydrodynamics plugin -->
     <plugin
