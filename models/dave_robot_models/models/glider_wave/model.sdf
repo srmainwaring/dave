@@ -1,4 +1,13 @@
 <?xml version="1.0"?>
+
+<!--
+
+Rudder position control
+
+  gz topic -t "/rudder_joint/cmd_pos" -m gz.msgs.Double -p "data: 0.5"
+  
+-->
+
 <sdf version="1.9">
   <model name="wave_glider">
 
@@ -132,27 +141,72 @@
         </axis>
     </joint>
 
-    <link name="wave_glider_umbilical_link">
+    <link name="wave_glider_umbilical1_link">
+      <pose>0.23 0 -1.31 0 0 0</pose>
       <inertial>
-        <pose>0.23 0 -1.31 0 0 0</pose>
-          <mass>5</mass>
+          <mass>1</mass>
           <inertia>
-            <ixx>1.204947917</ixx>
+            <ixx>0.240989583</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>1.204947917</iyy>
+            <iyy>0.240989583</iyy>
             <iyz>0</iyz>
-            <izz>0.0015625</izz>
+            <izz>0.0003125</izz>
           </inertia>
       </inertial>
       <collision name="collision">
-        <pose>0.23 0 -1.31 0 0 0</pose>
-        <!-- <geometry>
-          <mesh>
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <!-- <pose>-0.23 0 1.31 0 0 0</pose> -->
+        <geometry>
+          <!-- <mesh>
             <scale>1.0 1.0 1.0</scale>
             <uri>model://glider_wave/mesh/wave_glider_umbilical.dae</uri>
-          </mesh>
-        </geometry> -->
+          </mesh> -->
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>  
+    <joint name="wave_glider_umbilical1_joint" type="revolute">
+        <pose>0 0 0.85 0 0 0</pose>
+        <child>wave_glider_umbilical1_link</child>
+        <parent>wave_glider_umbilical_joint_joint</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <spring_stiffness>0.1</spring_stiffness>
+          </dynamics>
+          <xyz>0 1 0</xyz>
+        </axis>
+    </joint>
+
+    <link name="wave_glider_umbilical2_link">
+      <pose relative_to="wave_glider_umbilical1_link">0 0 -1.7 0 0 0</pose>
+      <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.240989583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.240989583</iyy>
+            <iyz>0</iyz>
+            <izz>0.0003125</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
         <geometry>
           <cylinder>
             <radius>0.024</radius>
@@ -162,41 +216,136 @@
       </collision>
       <visual name="visual">
         <geometry>
-          <mesh>
-            <scale>1.0 1.0 1.0</scale>
-            <uri>model://glider_wave/mesh/wave_glider_umbilical.dae</uri>
-          </mesh>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
         </geometry>
       </visual>
-    </link>  
-    <joint name="wave_glider_umbilical_joint" type="revolute">
-        <pose>0.23 0 -0.46 0 0 0</pose>
-        <child>wave_glider_umbilical_link</child>
-        <parent>wave_glider_umbilical_joint_joint</parent>
+    </link>
+    <joint name="wave_glider_umbilical2_joint" type="revolute">
+        <pose>0 0 0.85 0 0 0</pose>
+        <child>wave_glider_umbilical2_link</child>
+        <parent>wave_glider_umbilical1_link</parent>
         <axis>
           <limit>
             <lower>-0.8</lower>
             <upper>0.8</upper>
           </limit>
           <dynamics>
-            <damping>0.1</damping>
+            <damping>0.5</damping>
+            <spring_stiffness>0.1</spring_stiffness>
+          </dynamics>
+          <xyz>0 1 0</xyz>
+        </axis>
+    </joint>
+
+    <link name="wave_glider_umbilical3_link">
+      <pose relative_to="wave_glider_umbilical2_link">0 0 -1.7 0 0 0</pose>
+      <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.240989583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.240989583</iyy>
+            <iyz>0</iyz>
+            <izz>0.0003125</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="wave_glider_umbilical3_joint" type="revolute">
+        <pose>0 0 0.85 0 0 0</pose>
+        <child>wave_glider_umbilical3_link</child>
+        <parent>wave_glider_umbilical2_link</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <spring_stiffness>0.1</spring_stiffness>
+          </dynamics>
+          <xyz>0 1 0</xyz>
+        </axis>
+    </joint>
+
+    <link name="wave_glider_umbilical4_link">
+      <pose relative_to="wave_glider_umbilical3_link">0 0 -1.7 0 0 0</pose>
+      <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.240989583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.240989583</iyy>
+            <iyz>0</iyz>
+            <izz>0.0003125</izz>
+          </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="wave_glider_umbilical4_joint" type="revolute">
+        <pose>0 0 0.85 0 0 0</pose>
+        <child>wave_glider_umbilical4_link</child>
+        <parent>wave_glider_umbilical3_link</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <dynamics>
+            <damping>0.5</damping>
+            <spring_stiffness>0.1</spring_stiffness>
           </dynamics>
           <xyz>0 1 0</xyz>
         </axis>
     </joint>
 
     <link name="wave_glider_sub_body_link">
-      <pose>0.23 0 -2.30 0 0 0</pose>
+      <pose relative_to="wave_glider_umbilical4_link">0 0 -1.025 0 0 0</pose>
       <inertial>
           <pose>0.03 0 0 0 0 0</pose>
-          <mass>84</mass>
+          <mass>56</mass>
           <inertia>
-              <ixx>0.39815867</ixx>
+              <ixx>0.255959145</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>29.511223</iyy>
+              <iyy>18.9715005</iyy>
               <iyz>0</iyz>
-              <izz>29.14933567</izz>
+              <izz>18.73885865</izz>
           </inertia>
       </inertial>
       <collision name="body_collision">
@@ -244,9 +393,10 @@
       </visual> -->
     </link>
     <joint name="wave_glider_sub_body_joint" type="revolute">
-      <pose relative_to="wave_glider_sub_body_link">0 0 0.175 0 0 0</pose>
+      <!-- <pose relative_to="wave_glider_sub_body_link">0 0 0.175 0 0 0</pose> -->
+      <pose>0 0 0.175 0 0 0</pose>
       <child>wave_glider_sub_body_link</child>
-      <parent>wave_glider_umbilical_link</parent>
+      <parent>wave_glider_umbilical4_link</parent>
       <axis>
         <limit>
           <lower>-0.8</lower>
@@ -263,14 +413,14 @@
       <pose relative_to="wave_glider_sub_body_link">0.59839 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -323,14 +473,14 @@
       <pose relative_to="wave_glider_sub_body_link">0.38399 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -383,14 +533,14 @@
       <pose relative_to="wave_glider_sub_body_link">0.18322 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -443,14 +593,14 @@
       <pose relative_to="wave_glider_sub_body_link">-0.13839 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -503,14 +653,14 @@
       <pose relative_to="wave_glider_sub_body_link">-0.3528 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -563,14 +713,14 @@
       <pose relative_to="wave_glider_sub_body_link">-0.56136 0 0.064323 0 0 0</pose>
       <inertial>
           <pose>0 0 0 0 0 0</pose>
-          <mass>1</mass>
+          <mass>4</mass>
           <inertia>
-              <ixx>0.172818253</ixx>
+              <ixx>0.691273013</ixx>
               <ixy>0</ixy>
               <ixz>0</ixz>
-              <iyy>0.002342337</iyy>
+              <iyy>0.009369347</iyy>
               <iyz>0</iyz>
-              <izz>0.175124083</izz>
+              <izz>0.700496333</izz>
           </inertia>
       </inertial>
       <collision name="wing_collision">
@@ -731,10 +881,6 @@
     <!-- Joint state and force plugins -->
     <plugin filename="gz-sim-joint-state-publisher-system"
       name="gz::sim::systems::JointStatePublisher">
-    </plugin>
-    <plugin filename="gz-sim-apply-joint-force-system"
-      name="gz::sim::systems::ApplyJointForce">
-      <joint_name>wave_glider_sub_rudder_joint</joint_name>
     </plugin>
 
     <plugin filename="gz-sim-joint-position-controller-system"
