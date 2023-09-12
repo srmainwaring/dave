@@ -121,22 +121,29 @@
     <link name="wave_glider_umbilical_link">
       <inertial>
         <pose>0.23 0 -1.31 0 0 0</pose>
-          <mass>0.5</mass>
+          <mass>5</mass>
           <inertia>
-            <ixx>0.001</ixx>
+            <ixx>1.204947917</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.001</iyy>
+            <iyy>1.204947917</iyy>
             <iyz>0</iyz>
-            <izz>0.001</izz>
+            <izz>0.0015625</izz>
           </inertia>
       </inertial>
       <collision name="collision">
-        <geometry>
+        <pose>0.23 0 -1.31 0 0 0</pose>
+        <!-- <geometry>
           <mesh>
             <scale>1.0 1.0 1.0</scale>
             <uri>model://glider_wave/mesh/wave_glider_umbilical.dae</uri>
           </mesh>
+        </geometry> -->
+        <geometry>
+          <cylinder>
+            <radius>0.024</radius>
+            <length>1.7</length>
+          </cylinder>
         </geometry>
       </collision>
       <visual name="visual">
