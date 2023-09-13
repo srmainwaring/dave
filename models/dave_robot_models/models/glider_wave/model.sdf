@@ -1203,84 +1203,84 @@ Thruster angular velocity
 
     <!-- Hydrodynamics plugin -->
     <plugin
-        filename="gz-waves1-hydrodynamics-system"  
-        name="gz::sim::systems::Hydrodynamics">
-      
-        <enable>wave_glider::wave_glider_float_link</enable>
-        <enable>wave_glider::wave_glider_sub_body_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing1_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing2_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing3_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing4_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing5_link</enable>
-        <enable>wave_glider::wave_glider_sub_wing6_link</enable>
-          
-        <hydrodynamics>
-          <!-- <damping_on>1</damping_on>
-          <viscous_drag_on>1</viscous_drag_on> 
-          <pressure_drag_on>1</pressure_drag_on> -->
-        
-          <!-- Linear and Angular Damping -->
-          <!-- <cDampL1>1.0E-6</cDampL1>
-          <cDampL2>1.0E-6</cDampL2>
-          <cDampR1>1.0E-6</cDampR1>
-          <cDampR2>1.0E-6</cDampR2> -->
+      filename="gz-waves1-hydrodynamics-system"  
+      name="gz::sim::systems::Hydrodynamics">
     
-          <!-- 'Pressure' Drag -->
-          <!-- <cPDrag1>1.0E+2</cPDrag1> 
-          <cPDrag2>1.0E+2</cPDrag2>
-          <fPDrag>0.4</fPDrag>
-          <cSDrag1>1.0E+2</cSDrag1>
-          <cSDrag2>1.0E+2</cSDrag2>
-          <fSDrag>0.4</fSDrag>
-          <vRDrag>1.0</vRDrag> -->
-        </hydrodynamics>
-      </plugin>
+      <enable>wave_glider::wave_glider_float_link</enable>
+      <enable>wave_glider::wave_glider_sub_body_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing1_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing2_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing3_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing4_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing5_link</enable>
+      <enable>wave_glider::wave_glider_sub_wing6_link</enable>
+        
+      <hydrodynamics>
+        <!-- <damping_on>1</damping_on>
+        <viscous_drag_on>1</viscous_drag_on> 
+        <pressure_drag_on>1</pressure_drag_on> -->
+      
+        <!-- Linear and Angular Damping -->
+        <!-- <cDampL1>1.0E-6</cDampL1>
+        <cDampL2>1.0E-6</cDampL2>
+        <cDampR1>1.0E-6</cDampR1>
+        <cDampR2>1.0E-6</cDampR2> -->
+  
+        <!-- 'Pressure' Drag -->
+        <!-- <cPDrag1>1.0E+2</cPDrag1> 
+        <cPDrag2>1.0E+2</cPDrag2>
+        <fPDrag>0.4</fPDrag>
+        <cSDrag1>1.0E+2</cSDrag1>
+        <cSDrag2>1.0E+2</cSDrag2>
+        <fSDrag>0.4</fSDrag>
+        <vRDrag>1.0</vRDrag> -->
+      </hydrodynamics>
+    </plugin>
 
-      <!-- ArduPilot plugin -->
-      <plugin name="ArduPilotPlugin" filename="ArduPilotPlugin">
-        <fdm_addr>127.0.0.1</fdm_addr>
-        <fdm_port_in>9002</fdm_port_in>
+    <!-- ArduPilot plugin -->
+    <plugin name="ArduPilotPlugin" filename="ArduPilotPlugin">
+      <fdm_addr>127.0.0.1</fdm_addr>
+      <fdm_port_in>9002</fdm_port_in>
 
-        <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
-        <lock_step>1</lock_step>
-        <gazeboXYZToNED>0 0 0 3.141593 0 1.57079632</gazeboXYZToNED>
-        <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
-        <imuName>wave_glider_float_link::imu_sensor</imuName>
+      <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+      <lock_step>1</lock_step>
+      <gazeboXYZToNED>0 0 0 3.141593 0 1.57079632</gazeboXYZToNED>
+      <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+      <imuName>wave_glider_float_link::imu_sensor</imuName>
 
-        <!--
-          SERVO1_FUNCTION 26 (GroundSteering)
-          SERVO1_MAX 2000
-          SERVO1_MIN 1000
+      <!--
+        SERVO1_FUNCTION 26 (GroundSteering)
+        SERVO1_MAX 2000
+        SERVO1_MIN 1000
 
-          Input command in [0, 1]
-          Target rudder position in [-45, 45] deg ([-PI/4, PI/4] rad)
-         -->
-        <control channel="0">
-          <jointName>wave_glider_sub_rudder_joint</jointName>
-          <useForce>1</useForce>
-          <multiplier>1.570796</multiplier>
-          <offset>-0.5</offset>
-          <servo_max>2000</servo_max>
-          <servo_min>1000</servo_min>
-          <type>COMMAND</type>
-          <cmd_topic>/rudder/cmd_pos</cmd_topic>
-        </control>
+        Input command in [0, 1]
+        Target rudder position in [-45, 45] deg ([-PI/4, PI/4] rad)
+        -->
+      <control channel="0">
+        <jointName>wave_glider_sub_rudder_joint</jointName>
+        <useForce>1</useForce>
+        <multiplier>1.570796</multiplier>
+        <offset>-0.5</offset>
+        <servo_max>2000</servo_max>
+        <servo_min>1000</servo_min>
+        <type>COMMAND</type>
+        <cmd_topic>/rudder/cmd_pos</cmd_topic>
+      </control>
 
-        <!--
-          SERVO3_FUNCTION 70 (Throttle)
-          SERVO3_MAX 2000
-          SERVO3_MIN 1000
-         -->
-        <control channel="2">
-          <jointName>wave_glider_sub_thruster_joint</jointName>
-          <useForce>1</useForce>
-          <multiplier>500</multiplier>
-          <offset>-0.5</offset>
-          <type>COMMAND</type>
-          <cmd_topic>/thruster/cmd_vel</cmd_topic>
-        </control>
-      </plugin>
+      <!--
+        SERVO3_FUNCTION 70 (Throttle)
+        SERVO3_MAX 2000
+        SERVO3_MIN 1000
+        -->
+      <control channel="2">
+        <jointName>wave_glider_sub_thruster_joint</jointName>
+        <useForce>1</useForce>
+        <multiplier>500</multiplier>
+        <offset>-0.5</offset>
+        <type>COMMAND</type>
+        <cmd_topic>/thruster/cmd_vel</cmd_topic>
+      </control>
+    </plugin>
 
   </model>
 </sdf>
