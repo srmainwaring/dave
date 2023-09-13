@@ -1011,8 +1011,8 @@ Thruster angular velocity
       <parent>wave_glider_sub_body_link</parent>
       <axis>
         <limit>
-          <lower>-0.8</lower>
-          <upper>0.8</upper>
+          <lower>-0.78539816</lower>
+          <upper>0.78539816</upper>
         </limit>
         <dynamics>
           <damping>0.01</damping>
@@ -1050,6 +1050,7 @@ Thruster angular velocity
       <thrust_coefficient>-0.1</thrust_coefficient>
     </plugin>
 
+    <!-- Fin lift-drag -->
     <plugin name="gz::sim::systems::FoilLiftDrag"
         filename="asv_sim2-foil-lift-drag-system">
       <a0>0.0</a0>
@@ -1067,6 +1068,7 @@ Thruster angular velocity
       <topic>lift_drag</topic>
     </plugin>
 
+    <!-- Rudder lift-drag -->
     <plugin name="gz::sim::systems::FoilLiftDrag"
         filename="asv_sim2-foil-lift-drag-system">
       <a0>0.0</a0>
@@ -1074,7 +1076,7 @@ Thruster angular velocity
       <alpha_stall>0.1592</alpha_stall>
       <cla_stall>-0.7083</cla_stall>
       <cda>0.63662</cda>
-      <area>0.02</area>
+      <area>0.1</area>
       <fluid_density>1025</fluid_density>
       <forward>1 0 0</forward>
       <upward>0 1 0</upward>
@@ -1084,6 +1086,7 @@ Thruster angular velocity
       <topic>lift_drag</topic>
     </plugin>
 
+    <!-- Wing lift-drag -->
     <plugin name="gz::sim::systems::FoilLiftDrag"
         filename="asv_sim2-foil-lift-drag-system">
       <a0>0.0</a0>
