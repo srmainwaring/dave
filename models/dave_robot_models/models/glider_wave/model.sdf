@@ -7,7 +7,7 @@ Physical constants
 
 Rudder position control
 
-  gz topic -t "/rudder_joint/cmd_pos" -m gz.msgs.Double -p "data: 0.5"
+  gz topic -t "/rudder/cmd_pos" -m gz.msgs.Double -p "data: 0.5"
   
 -->
 
@@ -1019,14 +1019,14 @@ Rudder position control
     </joint>
 
     <!-- Joint state and force plugins -->
-    <plugin filename="gz-sim-joint-state-publisher-system"
-      name="gz::sim::systems::JointStatePublisher">
+    <plugin name="gz::sim::systems::JointStatePublisher"
+        filename="gz-sim-joint-state-publisher-system">
     </plugin>
 
-    <plugin filename="gz-sim-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
+    <plugin name="gz::sim::systems::JointPositionController"
+        filename="gz-sim-joint-position-controller-system">
       <joint_name>wave_glider_sub_rudder_joint</joint_name>
-      <topic>/rudder_joint/cmd_pos</topic>
+      <topic>rudder/cmd_pos</topic>
       <p_gain>40</p_gain>
       <i_gain>0.0</i_gain>
       <d_gain>0.1</d_gain>
