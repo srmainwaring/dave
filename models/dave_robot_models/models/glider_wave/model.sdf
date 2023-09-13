@@ -956,12 +956,11 @@ Thruster angular velocity
       <parent>wave_glider_sub_body_link</parent>
       <axis>
         <limit>
-          <lower>-1.0E-16</lower>
+          <lower>-1.0E+16</lower>
           <upper>1.0E+16</upper>
         </limit>
         <dynamics>
           <damping>0.01</damping>
-          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 0 1</xyz>
       </axis>
