@@ -9,6 +9,9 @@ Rudder position control
 
   gz topic -t "/rudder/cmd_pos" -m gz.msgs.Double -p "data: 0.5"
   
+Thruster angular velocity
+
+  gz topic -t "/thruster/cmd_vel" -m gz.msgs.Double -p "data: 10"
 -->
 
 <sdf version="1.9">
@@ -1034,6 +1037,17 @@ Rudder position control
       <i_min>-1</i_min>
       <cmd_max>50</cmd_max>
       <cmd_min>-50</cmd_min>
+    </plugin>
+
+    <plugin name="gz::sim::systems::Thruster"
+        filename="gz-sim-thruster-system">
+      <namespace></namespace>
+      <joint_name>wave_glider_sub_thruster_joint</joint_name>
+      <topic>thruster/cmd_vel</topic>
+      <use_angvel_cmd>1</use_angvel_cmd>
+      <fluid_density>1025</fluid_density>
+      <propeller_diameter>0.1</propeller_diameter>
+      <thrust_coefficient>-0.1</thrust_coefficient>
     </plugin>
 
     <plugin name="gz::sim::systems::FoilLiftDrag"
