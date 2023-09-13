@@ -607,6 +607,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -667,6 +668,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -727,6 +729,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -787,6 +790,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -847,6 +851,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -907,6 +912,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 1 0</xyz>
       </axis>
@@ -955,6 +961,7 @@ Thruster angular velocity
         </limit>
         <dynamics>
           <damping>0.01</damping>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <xyz>0 0 1</xyz>
       </axis>
